@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="https://pngtree.com/freepng/weight-icon-design-vector_5001251.html" type="image/icon type">
+    <meta charset="UTF-8">
+    <title>BMI CalX</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script>
+        document.addEventListener('DOMContentLoaded', function (){
+            document.querySelector('#result').style.display = 'none';
+            document.querySelector('#calc').onsubmit = () => {
+                const height = document.querySelector('#height').value;
+                const weight = document.querySelector('#weight').value;
+                const BMI = (weight/Math.pow(height / 100, 2)).toFixed(2);
+                const result = document.querySelector('#result');
+
+                let category;
+                if (BMI <= 18.5) {
+                    result.className = "alert alert-warning";
+                    category = 'Underweight'
+                } else if (25 < BMI) {
+                    result.className = "alert alert-danger";
+                    category = "Overweight"
+                } else {
+                    result.className = "alert alert-success";
+                    category = 'Fit'
+                }
+                
+                result.innerHTML = "Your BMI is "+ BMI + ". Current Status: " + category;
+                result.style.display = 'block';
+                return false;
+            }
+        });
+    </script>
+    <style>
+        body{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            padding: 10px;
+        }
+        h1{
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="alert alert-primary" role="alert">
+        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-exclamation-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+        </svg>
+        &nbsp;
+        <a href="https://www.cdc.gov/obesity/data/obesity-and-covid-19.html">COVID-19: Obesity May Increase Risk for Severe Illness</a>
+    </div>
+    
+    <form id="calc">
+        <h1>Adult BMI Calculator</h1>
+        <div style="margin-bottom: 5px" class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+               <span class="input-group-text" id="addon-wrapping">Height</span>
+            </div>
+            <input id="height" type="text" class="form-control" placeholder="Centimeters" aria-label="Username" aria-describedby="addon-wrapping">
+        </div>
+        <div style="margin-bottom: 10px" class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+               <span class="input-group-text" id="addon-wrapping">Weight</span>
+            </div>
+            <input id="weight" type="text" class="form-control" placeholder="Kgs" aria-label="Username" aria-describedby="addon-wrapping">
+        </div>
+        <button type="submit" class="btn btn-primary">Check</button>
+    </form>
+    <div style="margin-top: 10px" id="result" class="alert alert-success" role="alert">
+    </div>
+    <div style="margin-top: 100px" class="alert alert-info" role="alert">
+        You are using Metric BMI calculator. Use <a href="BMI_E.html" class="alert-link">English system instead</a>.
+    </div>
+</body>
+</html>
