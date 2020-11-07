@@ -1,3 +1,3 @@
 Metric and English BMI Calculator
 
-[https://PuruSoni.github.io/BMI-Calculator/BMI_E.html](https://PuruSoni.github.io/BMI-Calculator/BMI_E.html)
+[https://purusoni.github.io/Websites/BMI_Calculator/BMI_E.html](https://purusoni.github.io/Websites/BMI_Calculator/BMI_E.html)
